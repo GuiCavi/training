@@ -1,7 +1,7 @@
-class Multiplos {
+class Multiple {
   calculateSumOr(max) {
     return 23;
   }
 }
 
-export default Multiplos
+export default Multiple

@@ -1,7 +1,7 @@
-import Multiplos from "./main";
+import Multiple from "./main";
 
 const makeSut = () => {
-  return new Multiplos()
+  return new Multiple()
 }
 
 describe("Exercício 1", () => {
