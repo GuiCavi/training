@@ -16,15 +16,19 @@ export const isHappyNumber = (num: number) => {
     return true;
   }
 
-  while (num > 9) {
+  const passNumbers = [];
+
+  while (num !== 1) {
     let sum = calculateSum(num);
 
-    if (sum === 1 || sum === 7) {
-      return true;
+    if (passNumbers.includes(sum)) {
+      return false;
     }
+
+    passNumbers.push(sum);
 
     num = sum;
   };
 
-  return false;
+  return true;
 }
