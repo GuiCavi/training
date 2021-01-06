@@ -45,4 +45,12 @@ describe("Exercício 1", () => {
 
     expect(result).toBe(33165);
   });
+
+  test("Should calculate the sum of (3 OR 5) AND 7 multiples for 50", () => {
+    const sut = makeSut();
+
+    const result = sut.calculateSumOrAnd(50);
+
+    expect(result).toBe(98);
+  });
 })

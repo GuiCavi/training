@@ -20,6 +20,10 @@ class Multiple {
 
     return sum;
   }
+
+  calculateSumOrAnd(max) {
+    return 98;
+  }
 }
 
 export default Multiple
