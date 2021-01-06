@@ -29,4 +29,12 @@ describe("Exercício 1", () => {
 
     expect(result).toBe(0);
   });
+
+  test("Should calculate the sum of 3 AND 5 multiples for 20", () => {
+    const sut = makeSut();
+
+    const result = sut.calculateSumAnd(20);
+
+    expect(result).toBe(15);
+  });
 })
