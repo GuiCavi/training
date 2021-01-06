@@ -9,6 +9,10 @@ class Multiple {
 
     return sum;
   }
+
+  calculateSumAnd(max) {
+    return 0;
+  }
 }
 
 export default Multiple
