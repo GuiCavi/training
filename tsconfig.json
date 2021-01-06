@@ -1,8 +1,10 @@
 {
-    "compilerOptions": {
-      "target": "es5",
-      "module": "commonjs",
-      "outDir": "out",
-      "sourceMap": true
-    }
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "commonjs",
+    "outDir": "out",
+    "rootDir": "./src",
+    "sourceMap": true,
+    "removeComments": true
   }
+}
