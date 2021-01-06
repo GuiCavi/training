@@ -1,4 +1,4 @@
-import Multiple from "./main";
+import Multiple from "./Multiple";
 
 const makeSut = () => {
   return new Multiple()
