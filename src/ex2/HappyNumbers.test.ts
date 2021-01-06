@@ -12,4 +12,20 @@ describe("Exercício 2", () => {
 
     expect(result).toBe(true);
   });
+
+  test('Should return false if the number is not happy', () => {
+    const sut = makeSut();
+
+    const result = sut.isHappyNumber(12);
+
+    expect(result).toBe(false);
+  });
+
+  test('Should return true if the number is happy', () => {
+    const sut = makeSut();
+
+    const result = sut.isHappyNumber(13);
+
+    expect(result).toBe(true);
+  });
 })
