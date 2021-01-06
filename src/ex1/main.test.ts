@@ -37,4 +37,12 @@ describe("Exercício 1", () => {
 
     expect(result).toBe(15);
   });
+
+  test("Should calculate the sum of 3 AND 5 multiples for 1000", () => {
+    const sut = makeSut();
+
+    const result = sut.calculateSumAnd(1000);
+
+    expect(result).toBe(33165);
+  });
 })
