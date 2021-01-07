@@ -7,8 +7,12 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "start": "yarn dev",
     "dev": "tsnd --respawn --transpile-only main.ts",
-    "test": "jest --watch"
+    "test": "jest --passWithNoTests --runInBand",
+    "test:w": "yarn test -- --watch",
+    "test:s": "yarn test -- --findRelatedTests",
+    "test:ci": "yarn test -- --coverage"
   },
   "devDependencies": {
     "@types/jest": "^26.0.19",
