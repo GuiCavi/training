@@ -5,7 +5,7 @@ const makeSut = () => {
 }
 
 describe("Exercício 3", () => {
-  test("Should check if the word 'Feliz' is a prime number", () => {
+  test("Should check if the word 'Feliz' is not a prime number", () => {
     const sut = makeSut();
 
     const result = sut.execute("Feliz");
@@ -43,5 +43,21 @@ describe("Exercício 3", () => {
     const result = sut.execute(".Cachorro_1!");
 
     expect(result.isPrime).toBe(true);
+  });
+
+  test("Should check if the word 'Feliz' is not a happy number", () => {
+    const sut = makeSut();
+
+    const result = sut.execute("Feliz");
+
+    expect(result.isHappy).toBe(false);
+  });
+
+  test("Should check if the word 'objective' is a happy number", () => {
+    const sut = makeSut();
+
+    const result = sut.execute("objective");
+
+    expect(result.isHappy).toBe(false);
   });
 })
