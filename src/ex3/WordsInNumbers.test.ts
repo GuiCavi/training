@@ -8,8 +8,40 @@ describe("Exercício 3", () => {
   test("Should check if the word 'Feliz' is a prime number", () => {
     const sut = makeSut();
 
-    const result = sut.isPrime("Feliz");
+    const result = sut.execute("Feliz");
 
-    expect(result).toBe(false);
+    expect(result.isPrime).toBe(false);
+  });
+
+  test("Should check if the word 'Cachorro' is a prime number", () => {
+    const sut = makeSut();
+
+    const result = sut.execute("Cachorro");
+
+    expect(result.isPrime).toBe(true);
+  });
+
+  test("Should check if the word 'Cachorro1' is a prime number", () => {
+    const sut = makeSut();
+
+    const result = sut.execute("Cachorro1");
+
+    expect(result.isPrime).toBe(true);
+  });
+
+  test("Should check if the word 'Cachorro_1!' is a prime number", () => {
+    const sut = makeSut();
+
+    const result = sut.execute("Cachorro_1!");
+
+    expect(result.isPrime).toBe(true);
+  });
+
+  test("Should check if the word '.Cachorro_1!' is a prime number", () => {
+    const sut = makeSut();
+
+    const result = sut.execute(".Cachorro_1!");
+
+    expect(result.isPrime).toBe(true);
   });
 })
