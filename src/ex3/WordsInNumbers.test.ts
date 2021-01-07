@@ -84,4 +84,20 @@ describe("Exercício 3", () => {
 
     expect(result.isHappy).toBe(true);
   });
+
+  test("Should check if the word 'Support' is not a multiple of 3 OR 5", () => {
+    const sut = makeSut();
+
+    const result = sut.execute("Support");
+
+    expect(result.isMultiple).toBe(false);
+  });
+
+  test("Should check if the word 'Teste' is a multiple of 3 OR 5", () => {
+    const sut = makeSut();
+
+    const result = sut.execute("Teste");
+
+    expect(result.isMultiple).toBe(true);
+  });
 })
