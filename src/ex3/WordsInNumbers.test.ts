@@ -58,6 +58,30 @@ describe("Exercício 3", () => {
 
     const result = sut.execute("objective");
 
-    expect(result.isHappy).toBe(false);
+    expect(result.isHappy).toBe(true);
+  });
+
+  test("Should check if the word 'objective1' is a happy number", () => {
+    const sut = makeSut();
+
+    const result = sut.execute("objective1");
+
+    expect(result.isHappy).toBe(true);
+  });
+
+  test("Should check if the word 'objective_1!' is a happy number", () => {
+    const sut = makeSut();
+
+    const result = sut.execute("objective_1!");
+
+    expect(result.isHappy).toBe(true);
+  });
+
+  test("Should check if the word '.objective_1!' is a happy number", () => {
+    const sut = makeSut();
+
+    const result = sut.execute(".objective_1!");
+
+    expect(result.isHappy).toBe(true);
   });
 })
