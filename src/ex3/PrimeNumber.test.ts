@@ -45,7 +45,7 @@ describe("Prime Numbers", () => {
     expect(result).toBe(true);
   });
 
-  test("Should check if the number 21 is a prime number", () => {
+  test("Should check if the number 21 is not a prime number", () => {
     const sut = makeSut();
 
     const result = sut.isPrime(21);
@@ -53,7 +53,7 @@ describe("Prime Numbers", () => {
     expect(result).toBe(false);
   });
 
-  test("Should check if the number 84 is a prime number", () => {
+  test("Should check if the number 84 is not a prime number", () => {
     const sut = makeSut();
 
     const result = sut.isPrime(84);
