@@ -1,3 +1,4 @@
+import { isHappyNumber } from "../ex2/HappyNumbers";
 import { isPrime } from "./PrimeNumber";
 
 const LETTERS = ".abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -12,7 +13,8 @@ class WordsInNumbers {
         .reduce((prev, curr) => prev + curr, 0);
 
     return {
-      isPrime: isPrime(sum)
+      isPrime: isPrime(sum),
+      isHappy: isHappyNumber(sum)
     };
   }
 }
