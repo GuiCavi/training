@@ -1,4 +1,4 @@
-export const isPrime = (num: number) => {
+export const isPrimeNumber = (num: number) => {
   if (num === 1 || num === 2) return true;
 
   if (num % 2 === 0) return false;

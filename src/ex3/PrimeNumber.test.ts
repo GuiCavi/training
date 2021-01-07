@@ -1,14 +1,14 @@
-import { isPrime } from "./PrimeNumber";
+import { isPrimeNumber } from "./PrimeNumber";
 
 const makeSut = () => {
-  return { isPrime }
+  return { isPrimeNumber }
 }
 
 describe("Prime Numbers", () => {
   test("Should check if the number 1 is a prime number", () => {
     const sut = makeSut();
 
-    const result = sut.isPrime(1);
+    const result = sut.isPrimeNumber(1);
 
     expect(result).toBe(true);
   });
@@ -16,7 +16,7 @@ describe("Prime Numbers", () => {
   test("Should check if the number 2 is a prime number", () => {
     const sut = makeSut();
 
-    const result = sut.isPrime(2);
+    const result = sut.isPrimeNumber(2);
 
     expect(result).toBe(true);
   });
@@ -24,7 +24,7 @@ describe("Prime Numbers", () => {
   test("Should check if the number 3 is a prime number", () => {
     const sut = makeSut();
 
-    const result = sut.isPrime(3);
+    const result = sut.isPrimeNumber(3);
 
     expect(result).toBe(true);
   });
@@ -32,7 +32,7 @@ describe("Prime Numbers", () => {
   test("Should check if the number 5 is a prime number", () => {
     const sut = makeSut();
 
-    const result = sut.isPrime(5);
+    const result = sut.isPrimeNumber(5);
 
     expect(result).toBe(true);
   });
@@ -40,7 +40,7 @@ describe("Prime Numbers", () => {
   test("Should check if the number 17 is a prime number", () => {
     const sut = makeSut();
 
-    const result = sut.isPrime(17);
+    const result = sut.isPrimeNumber(17);
 
     expect(result).toBe(true);
   });
@@ -48,7 +48,7 @@ describe("Prime Numbers", () => {
   test("Should check if the number 21 is not a prime number", () => {
     const sut = makeSut();
 
-    const result = sut.isPrime(21);
+    const result = sut.isPrimeNumber(21);
 
     expect(result).toBe(false);
   });
@@ -56,7 +56,7 @@ describe("Prime Numbers", () => {
   test("Should check if the number 84 is not a prime number", () => {
     const sut = makeSut();
 
-    const result = sut.isPrime(84);
+    const result = sut.isPrimeNumber(84);
 
     expect(result).toBe(false);
   });
@@ -64,7 +64,7 @@ describe("Prime Numbers", () => {
   test("Should check if the number 107 is a prime number", () => {
     const sut = makeSut();
 
-    const result = sut.isPrime(107);
+    const result = sut.isPrimeNumber(107);
 
     expect(result).toBe(true);
   });

@@ -1,40 +1,18 @@
-class Multiple {
-  isMultiple(num, multi) {
-    return num % multi === 0;
-  }
-
-  calculateSumOr(max) {
-    let sum = 0;
-    for (let i = 0; i < max; i++) {
-      if (this.isMultiple(i, 3) || this.isMultiple(i, 5)) {
-        sum += i;
-      }
-    }
-
-    return sum;
-  }
-
-  calculateSumAnd(max) {
-    let sum = 0;
-    for (let i = 0; i < max; i++) {
-      if (this.isMultiple(i, 3) && this.isMultiple(i, 5)) {
-        sum += i;
-      }
-    }
-
-    return sum;
-  }
-
-  calculateSumOrAnd(max) {
-    let sum = 0;
-    for (let i = 0; i < max; i++) {
-      if ((this.isMultiple(i, 3) || this.isMultiple(i, 5)) && this.isMultiple(i, 7)) {
-        sum += i;
-      }
-    }
-
-    return sum;
-  }
+export const isMultipleNumber = (num: number, multi: number) => {
+  return num % multi === 0;
 }
 
-export default Multiple
+export const multiple3or5 = (i: number) => isMultipleNumber(i, 3) || isMultipleNumber(i, 5)
+export const multiple3and5 = (i: number) => isMultipleNumber(i, 3) && isMultipleNumber(i, 5)
+export const multiple3or5and7 = (i: number) => multiple3or5(i) && isMultipleNumber(i, 7)
+
+export const sumBasedOnCondition = (max: number, condition: Function) => {
+  let sum = 0;
+  for (let i = 0; i < max; i++) {
+    if (condition(i)) {
+      sum += i;
+    }
+  }
+
+  return sum;
+}
