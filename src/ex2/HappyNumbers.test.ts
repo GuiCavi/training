@@ -5,10 +5,18 @@ const makeSut = () => {
 }
 
 describe("Exercício 2", () => {
-  test("Should return true if input is 1", () => {
+  test("Should return true if input is 1 because 1 is happy", () => {
     const sut = makeSut();
 
     const result = sut.isHappyNumber(1);
+
+    expect(result).toBe(true);
+  });
+
+  test("Should return true if input is 7 because 7 is happy", () => {
+    const sut = makeSut();
+
+    const result = sut.isHappyNumber(7);
 
     expect(result).toBe(true);
   });
