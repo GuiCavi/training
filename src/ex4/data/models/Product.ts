@@ -1,4 +1,4 @@
-import { IProduct } from "./IProduct";
+import { IProduct } from "../../domain/models/IProduct";
 
 export class Product implements IProduct {
   name: string;
