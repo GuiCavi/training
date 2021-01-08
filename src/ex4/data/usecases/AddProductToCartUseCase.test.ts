@@ -1,4 +1,4 @@
-import { Product } from "../domain/models/Product";
+import { Product } from "../../domain/models/Product";
 import { AddProductToCartUseCase } from "./AddProductToCartUseCase";
 
 const makeSut = () => {
@@ -10,7 +10,7 @@ describe('Add Product to Cart', () => {
     const sut = makeSut();
 
     const product = new Product("Caneta", 5.33);
-    const result = sut.addProduct(product);
+    const result = sut.add(product, 1);
 
     expect(result).toBe(true)
   });
