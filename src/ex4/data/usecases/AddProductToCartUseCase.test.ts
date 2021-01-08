@@ -1,8 +1,18 @@
+import { IProduct } from "../../domain/models/IProduct";
 import { Product } from "../../domain/models/Product";
 import { AddProductToCartUseCase } from "./AddProductToCartUseCase";
 
 const makeSut = () => {
-  return new AddProductToCartUseCase();
+  class ProductRepositorySpy {
+    save(product: any, qtd: any): boolean {
+      return true;
+    }
+
+  }
+
+  const productRepositorySpy = new ProductRepositorySpy();
+
+  return new AddProductToCartUseCase(productRepositorySpy);
 }
 
 describe('Add Product to Cart', () => {
