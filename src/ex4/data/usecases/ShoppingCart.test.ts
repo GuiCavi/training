@@ -69,4 +69,19 @@ describe('Shopping cart', () => {
     expect(sut.items[0].product).toEqual(product);
     expect(sut.total()).toBe(qtdAdded * 5.33);
   });
+
+  test('Should have 1 product after adding 2 items of 1 product and the total is correct', () => {
+    const { sut } = makeSut();
+
+    const product = new Product("Caneta", 5.33);
+    const qtdAdded = 2;
+
+    sut.add(product, qtdAdded);
+
+    const result = sut.empty();
+
+    expect(result).toBe(true);
+    expect(sut.items.length).toBe(0);
+    expect(sut.total()).toBe(0);
+  });
 });
