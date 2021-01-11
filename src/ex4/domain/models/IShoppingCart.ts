@@ -6,6 +6,7 @@ export interface IShoppingCart {
   user: IUser;
 
   add: (product: IProduct, qtd: number) => boolean;
+  empty: () => boolean;
   total: () => number;
 }
 

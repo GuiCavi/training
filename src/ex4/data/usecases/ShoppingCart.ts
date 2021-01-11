@@ -27,6 +27,11 @@ export class ShoppingCart implements IShoppingCart {
     return newQtd === currentQtd + 1;
   }
 
+  empty(): boolean {
+    this.items = [];
+    return true;
+  }
+
   total(): number {
     return this.items.reduce((prev, curr) => prev + curr.qtd * curr.product.price, 0)
   }
