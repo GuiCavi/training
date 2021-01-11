@@ -2,11 +2,14 @@ import { IProduct } from "./IProduct";
 import { IUser } from "./IUser";
 
 export interface IShoppingCart {
-  products: IProductQtd[];
+  items: IItem[];
   user: IUser;
+
+  add: (product: IProduct, qtd: number) => boolean;
+  total: () => number;
 }
 
-export interface IProductQtd {
+export interface IItem {
   product: IProduct;
   qtd: number;
 }
