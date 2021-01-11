@@ -32,16 +32,23 @@ export class ShoppingCart implements IShoppingCart {
     return this.items.length === 0;
   }
 
-  remove(name: string, qtd?: number): boolean {
-    qtd = qtd || 1;
-
+  remove(name: string, qtd: number): boolean {
     const indexRemoved = this.items.findIndex(item => item.product.name === name);
 
     if (indexRemoved === -1) return false;
 
-    const currentLength = this.items.length;
-    this.items.splice(indexRemoved, 1);
+    if (qtd > this.items[indexRemoved].qtd) return false;
 
+    if (qtd <= 0) return false;
+
+    const currentLength = this.items.length;
+
+    if (this.items[indexRemoved].qtd > 1 && this.items[indexRemoved].qtd !== qtd) {
+      this.items[indexRemoved].qtd -= qtd;
+      return true;
+    }
+
+    this.items.splice(indexRemoved, 1);
     const newLength = this.items.length;
 
     return newLength === currentLength - 1;
