@@ -7,6 +7,10 @@ export class ShoppingCart implements IShoppingCart {
   items: IItem[] = [];
   user: IUser;
 
+  constructor(user: IUser) {
+    this.user = user;
+  }
+
   add(product: IProduct, qtd: number): boolean {
     const item = new Item(product, qtd);
 
