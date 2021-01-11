@@ -29,8 +29,23 @@ export class ShoppingCart implements IShoppingCart {
 
   empty(): boolean {
     this.items = [];
-    return true;
+    return this.items.length === 0;
   }
+
+  remove(name: string, qtd?: number): boolean {
+    qtd = qtd || 1;
+
+    const indexRemoved = this.items.findIndex(item => item.product.name === name);
+
+    if (indexRemoved === -1) return false;
+
+    const currentLength = this.items.length;
+    this.items.splice(indexRemoved, 1);
+
+    const newLength = this.items.length;
+
+    return newLength === currentLength - 1;
+  };
 
   total(): number {
     return this.items.reduce((prev, curr) => prev + curr.qtd * curr.product.price, 0)

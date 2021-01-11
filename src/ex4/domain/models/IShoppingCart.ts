@@ -7,6 +7,7 @@ export interface IShoppingCart {
 
   add: (product: IProduct, qtd: number) => boolean;
   empty: () => boolean;
+  remove: (name: string, qtd?: number) => boolean;
   total: () => number;
 }
 
