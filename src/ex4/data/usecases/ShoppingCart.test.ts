@@ -1,24 +1,35 @@
 import { Product } from "./Product";
 import { ShoppingCart } from "./ShoppingCart";
+import { User } from "./User";
 
 type SutType = {
+  user: User,
   sut: ShoppingCart,
 }
 
 const makeSut = (): SutType => {
-  const sut = new ShoppingCart();
+  const user = new User("User 1", "123456");
+  const sut = new ShoppingCart(user);
 
   return {
+    user,
     sut
   }
 }
 
 describe('Shopping cart', () => {
+  test('Should save the user that is using the cart', () => {
+    const { sut, user } = makeSut();
+
+    expect(sut.user).toEqual(user);
+    expect(sut.total()).toBe(0);
+  });
+
   test('Should return 0 for the total if no product is in cart', () => {
     const { sut } = makeSut();
 
     expect(sut.items.length).toBe(0);
-    expect(sut.total()).toBe(0)
+    expect(sut.total()).toBe(0);
   });
 
   test('Should have 1 product after adding 1 product to cart and the total is correct', () => {
