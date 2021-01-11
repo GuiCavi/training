@@ -84,4 +84,27 @@ describe('Shopping cart', () => {
     expect(sut.items.length).toBe(0);
     expect(sut.total()).toBe(0);
   });
+
+  test('Should return false if the product was not found in the cart', () => {
+    const { sut } = makeSut();
+
+    const result = sut.remove("Caneta");
+
+    expect(result).toBe(false);
+  });
+
+  test('Should have 0 products after adding 1 item of 1 product and removing it', () => {
+    const { sut } = makeSut();
+
+    const product = new Product("Caneta", 5.33);
+    const qtdAdded = 1;
+
+    sut.add(product, qtdAdded);
+
+    const result = sut.remove("Caneta");
+
+    expect(result).toBe(true);
+    expect(sut.items.length).toBe(0);
+    expect(sut.total()).toBe(0);
+  });
 });
