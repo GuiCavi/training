@@ -24,7 +24,7 @@ describe('Shopping cart', () => {
   test('Should have 1 product after adding 1 product to cart and the total is correct', () => {
     const { sut } = makeSut();
 
-    const product = new Product("Caneta", 5.33);
+    const product = new Product("Caneta", 5);
 
     const result = sut.add(product, 1);
 
@@ -32,18 +32,18 @@ describe('Shopping cart', () => {
     expect(sut.items.length).toBe(1);
     expect(sut.items[0].qtd).toBe(1);
     expect(sut.items[0].product).toEqual(product);
-    expect(sut.total()).toBe(5.33);
+    expect(sut.total()).toBe(5);
   });
 
   test('Should have 1 product after adding 5 of the same product to cart and the total is correct', () => {
     const { sut } = makeSut();
 
     const products = [
-      new Product("Caneta", 5.33),
-      new Product("Caneta", 5.33),
-      new Product("Caneta", 5.33),
-      new Product("Caneta", 5.33),
-      new Product("Caneta", 5.33),
+      new Product("Caneta", 5),
+      new Product("Caneta", 5),
+      new Product("Caneta", 5),
+      new Product("Caneta", 5),
+      new Product("Caneta", 5),
     ];
 
     const result = products.map(product => sut.add(product, 1)).every(value => value);
@@ -52,13 +52,13 @@ describe('Shopping cart', () => {
     expect(sut.items.length).toBe(1);
     expect(sut.items[0].qtd).toBe(5);
     expect(sut.items[0].product).toEqual(products[0]);
-    expect(sut.total()).toBe(products.length * 5.33);
+    expect(sut.total()).toBe(products.length * 5);
   });
 
   test('Should have 1 product after adding 2 items of 1 product and the total is correct', () => {
     const { sut } = makeSut();
 
-    const product = new Product("Caneta", 5.33);
+    const product = new Product("Caneta", 5);
     const qtdAdded = 2;
 
     const result = sut.add(product, qtdAdded);
@@ -67,13 +67,13 @@ describe('Shopping cart', () => {
     expect(sut.items.length).toBe(1);
     expect(sut.items[0].qtd).toBe(qtdAdded);
     expect(sut.items[0].product).toEqual(product);
-    expect(sut.total()).toBe(qtdAdded * 5.33);
+    expect(sut.total()).toBe(qtdAdded * 5);
   });
 
   test('Should have 1 product after adding 2 items of 1 product and the total is correct', () => {
     const { sut } = makeSut();
 
-    const product = new Product("Caneta", 5.33);
+    const product = new Product("Caneta", 5);
     const qtdAdded = 2;
 
     sut.add(product, qtdAdded);
@@ -88,23 +88,103 @@ describe('Shopping cart', () => {
   test('Should return false if the product was not found in the cart', () => {
     const { sut } = makeSut();
 
-    const result = sut.remove("Caneta");
+    const result = sut.remove("Caneta", 1);
 
     expect(result).toBe(false);
+    expect(sut.total()).toBe(0);
   });
 
   test('Should have 0 products after adding 1 item of 1 product and removing it', () => {
     const { sut } = makeSut();
 
-    const product = new Product("Caneta", 5.33);
+    const product = new Product("Caneta", 5);
     const qtdAdded = 1;
 
     sut.add(product, qtdAdded);
 
-    const result = sut.remove("Caneta");
+    const result = sut.remove("Caneta", 1);
 
     expect(result).toBe(true);
     expect(sut.items.length).toBe(0);
     expect(sut.total()).toBe(0);
+  });
+
+  test('Should have 1 product after adding 2 items of 1 product and removing 1 of them', () => {
+    const { sut } = makeSut();
+
+    const product = new Product("Caneta", 5);
+    const qtdAdded = 2;
+
+    sut.add(product, qtdAdded);
+
+    const result = sut.remove("Caneta", 1);
+
+    expect(result).toBe(true);
+    expect(sut.items.length).toBe(1);
+    expect(sut.items[0].qtd).toBe(1);
+    expect(sut.items[0].product).toEqual(product);
+    expect(sut.total()).toBe(5);
+  });
+
+  test('Should have 0 product after adding 2 items of 1 product and removing 2 of them', () => {
+    const { sut } = makeSut();
+
+    const product = new Product("Caneta", 5);
+    const qtdAdded = 2;
+
+    sut.add(product, qtdAdded);
+
+    const result = sut.remove("Caneta", 2);
+
+    expect(result).toBe(true);
+    expect(sut.items.length).toBe(0);
+    expect(sut.total()).toBe(0);
+  });
+
+  test('Should have 1 product after adding 1 item of 2 products and removing 1 of them', () => {
+    const { sut } = makeSut();
+
+    const products = [
+      new Product("Caneta", 5),
+      new Product("Borracha", 8),
+    ];
+
+    products.forEach(product => sut.add(product, 1));
+
+    const result = sut.remove("Caneta", 1);
+
+    expect(result).toBe(true);
+    expect(sut.items.length).toBe(1);
+    expect(sut.items[0].qtd).toBe(1);
+    expect(sut.items[0].product).toEqual(products[1]);
+    expect(sut.total()).toBe(8);
+  });
+
+  test('Should return false if qtd in cart is > qtd to remove', () => {
+    const { sut } = makeSut();
+
+    const product = new Product("Caneta", 5);
+    const qtdAdded = 2;
+
+    sut.add(product, qtdAdded);
+
+    const result = sut.remove("Caneta", 3);
+
+    expect(result).toBe(false);
+    expect(sut.total()).toBe(10);
+  });
+
+  test('Should return false if qtd to remove <= 0', () => {
+    const { sut } = makeSut();
+
+    const product = new Product("Caneta", 5);
+    const qtdAdded = 4;
+
+    sut.add(product, qtdAdded);
+
+    const result = sut.remove("Caneta", 0);
+
+    expect(result).toBe(false);
+    expect(sut.total()).toBe(20)
   });
 });
