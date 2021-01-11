@@ -10,13 +10,24 @@ export class ShoppingCart implements IShoppingCart {
   add(product: IProduct, qtd: number): boolean {
     const item = new Item(product, qtd);
 
-    const currentLength = this.items.length;
-    const newLength = this.items.push(item);
+    const indexAdded = this.items.findIndex(item => item.product.name === product.name);
 
-    return newLength === currentLength + 1;
+    if (indexAdded === -1) {
+      const currentLength = this.items.length;
+      const newLength = this.items.push(item);
+
+      return newLength === currentLength + 1;
+    }
+
+    const currentQtd = this.items[indexAdded].qtd;
+    this.items[indexAdded].qtd++;
+
+    const newQtd = this.items[indexAdded].qtd;
+
+    return newQtd === currentQtd + 1;
   }
 
   total(): number {
-    return 0
+    return this.items.reduce((prev, curr) => prev + curr.qtd * curr.product.price, 0)
   }
 }
