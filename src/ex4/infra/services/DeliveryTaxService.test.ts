@@ -96,4 +96,19 @@ describe('Delivery Tax Service', () => {
     expect(result).toBe(correiosServiceSpy.tax + price * qtdAdded);
     expect(correiosServiceSpy.callsCount).toBe(0);
   });
+
+  test("if the total value is 100 the return is 100", () => {
+    const { sut, correiosServiceSpy, shoppingCartMock } = makeSut();
+
+    const price = 100;
+    const product = new Product("Mesa", price);
+    const qtdAdded = 1;
+
+    shoppingCartMock.add(product, qtdAdded);
+
+    const result = sut.totalWithDeliveryTax(shoppingCartMock);
+
+    expect(result).toBe(correiosServiceSpy.tax + price * qtdAdded);
+    expect(correiosServiceSpy.callsCount).toBe(0);
+  });
 });
